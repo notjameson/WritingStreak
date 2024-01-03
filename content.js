@@ -1,14 +1,17 @@
-function countWords(text) {
-    return text.split(/\s+/).filter(Boolean).length;
+let currentWord = '';
+let wordCount = 0;
+
+document.addEventListener('input', (event) => {
+  const inputType = event.inputType;
+
+  if (inputType === 'insertText') {
+    if (event.data === ' ') {
+      currentWord = '';
+      wordCount += 1
+    } else {
+      currentWord += event.data
+    }
   }
-  const textElements = document.querySelectorAll('textarea, input[type="text"]');
-  
-  textElements.forEach((element) => {
-    element.addEventListener('input', () => {
-      const wordCount = countWords(element.value);
-      chrome.runtime.sendMessage({ message: "updateCount", count: wordCount }, (response) => {
-        console.log(`Total words written: ${response.wordCount}`);
-      });
-    });
-  });
-  
+  console.log('word')
+  chrome.runtime.sendMessage({ type: "updateWordCount", count: wordCount });
+});

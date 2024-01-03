@@ -1,6 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
-    chrome.runtime.sendMessage({ message: "getCount" }, (response) => {
-      document.getElementById('count').textContent = response.wordCount;
-    });
-  });
-  
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.wordCount) {
+      document.getElementById('wordCount').textContent = request.wordCount;
+    }
+  }
+);
