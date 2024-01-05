@@ -9,9 +9,13 @@ document.addEventListener('input', (event) => {
       currentWord = '';
       wordCount += 1
       console.log(wordCount)
+      chrome.runtime.sendMessage(
+      { type: "updateWordCount", count: wordCount },
+      function (response) {
+          console.log(response);
+      });
     } else {
       currentWord += event.data
     }
   }
-  chrome.runtime.sendMessage({ type: "updateWordCount", count: wordCount });
 });

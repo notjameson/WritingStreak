@@ -11,6 +11,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         console.log('update worker count listener detected')
         wordCount = request.count;
     }
+    sendResponse("response sent")
 });
 
 // Function to send the current word count to the popup
@@ -20,7 +21,9 @@ function sendWordCountToPopup() {
 
 // Listener for popup requests
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log("message received")
     if (request.type === "getWordCount") {
         sendWordCountToPopup();
+        sendResponse("response sent")
     }
 });
