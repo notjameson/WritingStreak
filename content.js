@@ -8,10 +8,10 @@ document.addEventListener('input', (event) => {
     if (event.data === ' ') {
       currentWord = '';
       wordCount += 1
+      console.log(wordCount)
     } else {
       currentWord += event.data
     }
   }
-  console.log('word')
   chrome.runtime.sendMessage({ type: "updateWordCount", count: wordCount });
 });

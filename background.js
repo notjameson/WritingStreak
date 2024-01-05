@@ -5,8 +5,10 @@ let wordCount = 0;
 
 // Listener for messages from content scripts
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log('start background listener')
     if (request.type === "updateWordCount") {
         // Update word count
+        console.log('update worker count listener detected')
         wordCount = request.count;
     }
 });
