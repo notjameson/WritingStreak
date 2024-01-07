@@ -10,7 +10,10 @@
     },
     "content_scripts": [
         {
-        "matches": ["<all_urls>"],
+        "matches": [
+            "https://hemingwayapp.com/*",
+            "https://docs.google.com/*"
+        ],
         "js": ["content.js"]
         }
     ],
