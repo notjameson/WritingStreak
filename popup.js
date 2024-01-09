@@ -1,7 +1,5 @@
-let state = true;
-
 chrome.runtime.sendMessage({ type: "getWordCount" })
-chrome.runtime.sendMessage({ type: "iconState", value: state})
+chrome.runtime.sendMessage({ type: "updateState" })
 state = !state
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
