@@ -1,5 +1,5 @@
 let wordCount = 0;
-let state = true;
+let state = false;
 let onIconPath = ({ "16": "/Icons/streak-16.png",
 "32": "/Icons/streak-32.png" })
 let offIconPath = ({ "16": "/Icons/streak-off-16.png",
@@ -13,7 +13,9 @@ function sendWordCountToPopup() {
 // Listener for messages from content scripts
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.type === "updateWordCount") {
-        wordCount = request.count;
+        if (state) {
+            wordCount += 1;
+        }
     }
     if (request.type === "getWordCount") {
         sendWordCountToPopup();

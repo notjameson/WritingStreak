@@ -1,6 +1,5 @@
 chrome.runtime.sendMessage({ type: "getWordCount" })
 chrome.runtime.sendMessage({ type: "updateState" })
-state = !state
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.type === "wordCount") {
