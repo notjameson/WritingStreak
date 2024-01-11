@@ -1,3 +1,4 @@
+// we probably don't need this, but might use it in the future.
 let currentWord = '';
 
 document.addEventListener('input', (event) => {
