@@ -18,6 +18,9 @@
         }
     ],
     "action": {
-        "default_popup": "streak.html"
+        "default_popup": "streak.html",
+        "default_icon": {
+            "16": "Icons/streak-32.png"
+        }
     }
   }
